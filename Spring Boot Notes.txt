@@ -1,0 +1,42 @@
+Spring Boot Notes
+
+I.  Useful Links
+	1.  DevTools info: https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html
+	2.  Database Initialization: https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html
+	
+II.  Application Info
+	1.  Link to API calls
+		- games: http://localhost:8081/footballpool/games/week/1
+		- paged games: http://localhost:8081/footballpool/games/paged?page=0&size=4&sort=weekNumber&direction=asc
+		Location: http://localhost:8081/footballpool/games/5
+	2.  To execute POST request:
+		a.  Open Fiddler and click on the Composer tab.
+		b.  Paste JSON into the Request Body pane:
+			{"homeTeamCity":"New England","homeTeamName":"Patriots","visitingTeamCity":"Miami","visitingTeamName":"Dolphins","favoriteTeamCity":"New England","favoriteTeamName":"Patriots","startDateTime":[2017,9,12,5,18],"weekNumber":1,"line":10.0,"overUnder":46.5}
+		c.  Add the following header in the to pane: Content-Type: application/json
+		d.  Make sure POST is selected in the drop down.
+		e.  Click the Execute button.
+		
+	3.  To execute PUT request:
+		a.  Open Fiddler and click on the Composer tab.
+		b.  Paste JSON into the Request Body pane:
+			{"homeTeamCity":"New England","homeTeamName":"Patriots","visitingTeamCity":"Miami","visitingTeamName":"Dolphins","favoriteTeamCity":"New England","favoriteTeamName":"Patriots","startDateTime":[2017,9,12,5,18],"weekNumber":1,"line":10.0,"overUnder":46.5}
+		c.  Add the following header in the to pane: Content-Type: application/json
+		d.  Make sure PUT is selected in the drop down.
+		e.  Click the Execute button.
+			
+	
+	4.  H2 Console url: http://localhost:8081/h2-console
+	
+
+III. Agenda
+	1.  Paging and sorting in GamesController (done)
+	2.  Implement POST and PUT Methods in GamesController (done): https://www.javacodegeeks.com/2015/01/getting-started-with-jersey-and-spring-boot.html
+		- http://spring.io/guides/tutorials/bookmarks/
+	3.  
+	4.  Security.
+	5.  Unit and Integration tests.
+	6.  equals and getHashCode methods for other entities.
+
+	
+	

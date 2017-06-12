@@ -9,7 +9,7 @@ package com.lincoln.footballpool.domain.repositories;
 
 import java.util.Collection;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.lincoln.footballpool.domain.entities.Game;
 
@@ -17,7 +17,7 @@ import com.lincoln.footballpool.domain.entities.Game;
  * Abstraction for Game Repository that handles basic CRUD operations consistent
  * with the Repository pattern regarding {@link Game} entity instances.
  */
-public interface GameRepository extends CrudRepository<Game, Integer>  {
+public interface GameRepository extends PagingAndSortingRepository<Game, Long>  {
 
 	//Methods-------------------------------------------------------------
 	

@@ -27,4 +27,22 @@ public interface TeamRepository extends CrudRepository<Team, Integer> {
 	 * @return team belonging to the specified city
 	 */
 	Team getTeamByCity(String city);
+	
+	/**
+	 * Retrieves a team from the persistence store with the supplied team name.
+	 * 
+	 * @param teamName name of the team
+	 * 
+	 * @return team with the specified team name
+	 */
+	Team getTeamByTeamName(String teamName);
+	
+	/**
+	 * Determines whether or not a team with the supplied name exists in the persistence store.
+	 * 
+	 * @param teamName name of the team to check for
+	 * 
+	 * @return true if the team exists; otherwise false
+	 */
+	//boolean exists(String teamName);
 }

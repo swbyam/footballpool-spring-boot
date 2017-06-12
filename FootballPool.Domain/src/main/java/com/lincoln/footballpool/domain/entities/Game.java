@@ -15,14 +15,14 @@ public class Game extends EntityBase  {
 	/**
 	 * Home team of the game.
 	 */
-	@OneToOne (cascade=CascadeType.ALL)
+	@OneToOne ()
 	@JoinColumn(nullable=false)
 	private Team homeTeam;
 	
 	/**
 	 * Visiting team of the game.
 	 */
-	@OneToOne (cascade=CascadeType.ALL)
+	@OneToOne ()
 	@JoinColumn(nullable=false)
 	private Team visitingTeam;
 	
@@ -31,7 +31,7 @@ public class Game extends EntityBase  {
 	 * <p>
 	 * In the event a game has no favorite i.e. the line on the game is even, this will be set to null.
 	 */
-	@OneToOne (cascade=CascadeType.ALL)
+	@OneToOne ()
 	@JoinColumn(nullable=false)
 	private Team favoriteTeam;
 	
@@ -100,6 +100,27 @@ public class Game extends EntityBase  {
 		this.weekNumber = weekNumber;
 		this.line = line;
 		this.overUnder = overUnder;
+	}
+	
+	/**
+	 * Copy constructor that creates a new instance of the {@code Game} class based on information
+	 * contained in the supplied instance.
+	 * 
+	 * @param game game instance for which to create the new one based on
+	 */
+	public Game(final Game game) {
+		
+		if (game == null) {
+            throw new NullPointerException("game cannot be null.");
+        }
+		
+		this.homeTeam = game.homeTeam;
+		this.visitingTeam = game.visitingTeam;
+		this.favoriteTeam = game.favoriteTeam;
+		this.startDateTime = game.startDateTime;
+		this.weekNumber = game.weekNumber;
+		this.line = game.line;
+		this.overUnder = game.overUnder;
 	}
 	
 	/**
@@ -238,6 +259,33 @@ public class Game extends EntityBase  {
 	}
 	
 	//Public Methods-------------------------------------------------------------
+	
+	/**
+	 * Updates the game instance with information contained in the supplied game instance.
+	 * <p>
+	 * This method represents a non-side effect free function.  Callers should be aware that
+	 * passing in the game instance as a parameter changes the state of the game instance upon
+	 * which this method is called.
+	 * <p>
+	 * This method exists to support this class being used as a JPA entity where generation of 
+	 * a value for it's id property is handled by an ORM framework such as Hibernate. 
+	 * 
+	 * @param game game containing information to pass to the game instance
+	 */
+	public void updateGame(final Game game) {
+		
+		if (game == null) {
+            throw new NullPointerException("game cannot be null.");
+        }
+		
+		this.homeTeam = game.homeTeam;
+		this.visitingTeam = game.visitingTeam;
+		this.favoriteTeam = game.favoriteTeam;
+		this.startDateTime = game.startDateTime;
+		this.weekNumber = game.weekNumber;
+		this.line = game.line;
+		this.overUnder = game.overUnder;
+	}
 	
 	/**
 	 * {@code toString} method implementation.
